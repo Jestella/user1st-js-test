@@ -2,14 +2,16 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
+// static files from public directory
 app.use(express.static(path.join(__dirname, "public")));
 
+// serve index.html file for all routes (client-side routing)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "templates", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
