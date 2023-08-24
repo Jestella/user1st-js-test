@@ -13,5 +13,6 @@ project-root/
 │ ├── app.js
 │ ├── styles.scss
 ├── server.js
+├── manifest.js
 └── package.json
 ```
