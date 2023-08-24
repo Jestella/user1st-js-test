@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function navigateToPage(url) {
     const pagePath = routes[url] || "404.html";
+
+    //fetch
     fetch(`/pages/${pagePath}`)
       .then((response) => response.text())
       .then((content) => {
@@ -22,6 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error loading page:", error);
         document.getElementById("content").innerHTML = "Error loading page.";
       });
+
+    // XMLHttpRequest
+
+    // const xhr = new XMLHttpRequest();
+    // xhr.open("GET", `/pages/${pagePath}`, true);
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState === 4) {
+    //     if (xhr.status === 200) {
+    //       document.getElementById("content").innerHTML = xhr.responseText;
+    //       history.pushState(null, null, url);
+    //     } else {
+    //       console.error("Error loading page:", xhr.statusText);
+    //       document.getElementById("content").innerHTML = "Error loading page.";
+    //     }
+    //   }
+    // };
+    // xhr.send();
   }
 
   document.addEventListener("click", (e) => {
