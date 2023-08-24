@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const routes = {
     // main nav
-    "/": "home.html",
-    "/about": "about.html",
-    "/contact": "contact.html",
+    "/": "public/pages/home.html",
+    "/about": "public/pages/about.html",
+    "/contact": "public/pages/contact.html",
     // sub nav
-    "/home/page1": "home_page1.html",
-    "/home/page2": "home_page2.html",
-    404: "404.html",
+    "/home/page1": "public/pages/home_page1.html",
+    "/home/page2": "public/pages/home_page2.html",
+    404: "public/pages/404.html",
   };
 
   function navigateToPage(url) {
-    const pagePath = routes[url] || "404.html";
+    const pagePath = routes[url] || 404;
 
     //fetch
     fetch(`/pages/${pagePath}`)
