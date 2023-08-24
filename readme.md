@@ -1,3 +1,4 @@
+```
 project-root/
 ├── public/
 │ ├── pages/
@@ -13,3 +14,4 @@ project-root/
 │ ├── styles.scss
 ├── server.js
 └── package.json
+```
