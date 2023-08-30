@@ -59,4 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
       navigateToPage(event.state.url, false);
     }
   });
+
+  const SCOPE = "";
+
+  function removeScope() {
+    return window.location.pathname.substring(SCOPE.length);
+  }
+
+  navigateToPage(removeScope, false);
 });
