@@ -11,13 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function navigateToPage(url, pushState = true) {
+    console.log("url: ", url);
     const pagePath = routes[url] || routes["/404"];
 
     //fetch
     fetch(`/pages/${pagePath}`)
       .then((response) => response.text())
       .then((content) => {
-        console.log("Fetched content for:", url);
+        // console.log("Fetched content for:", url);
 
         document.getElementById("content").innerHTML = content;
         if (pushState) {
@@ -64,7 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function removeScope() {
     return window.location.pathname.substring(SCOPE.length);
+    //navigateToPage(removeScope, false);
   }
 
-  navigateToPage(removeScope, false);
+  navigateToPage(removeScope(), false);
 });
