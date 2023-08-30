@@ -7,18 +7,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // sub nav
     "/home/page1": "home_page1.html",
     "/home/page2": "home_page2.html",
-    404: "404.html",
+    "/404": "404.html",
   };
 
-  function navigateToPage(url) {
-    const pagePath = routes[url] || "404.html";
+  function navigateToPage(url, pushState = true) {
+    const pagePath = routes[url] || routes["/404"];
 
     //fetch
     fetch(`/pages/${pagePath}`)
       .then((response) => response.text())
       .then((content) => {
+        console.log("Fetched content for:", url);
+
         document.getElementById("content").innerHTML = content;
-        history.pushState(null, null, url);
+        if (pushState) {
+          history.pushState({ url }, null, url);
+        }
       })
       .catch((error) => {
         console.error("Error loading page:", error);
@@ -50,7 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  window.addEventListener("popstate", () => {
-    navigateToPage(location.pathname);
+  window.addEventListener("popstate", (event) => {
+    if (event.state && event.state.url) {
+      navigateToPage(event.state.url, false);
+    }
   });
 });
