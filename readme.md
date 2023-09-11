@@ -19,13 +19,4 @@ project-root/
 └── package.json
 ```
 
-## Running the App Locally
 
-1. Install Dependencies:
-   npm install
-
-2. Run the Server:
-   node server.js
-
-3. Access the App:
-   http://localhost:3000
